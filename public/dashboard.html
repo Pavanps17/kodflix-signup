@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AuthApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="dashboard-container fade-in">
+        <header class="navbar glassmorphism">
+            <div class="logo">AuthApp</div>
+            <button id="logout-btn" class="secondary-btn">Log Out</button>
+        </header>
+
+        <main class="content">
+            <div class="card glassmorphism">
+                <h2>Dashboard</h2>
+                <p>Welcome, <span id="user-display">User</span>!</p>
+                <p>Your role is: <span class="badge" id="role-display">Member</span></p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Profile Status</h3>
+                        <p>Active</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Last Login</h3>
+                        <p>Just now</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('jwt');
+            if (!token) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Decode JWT payload (Naive decoding for UI purposes)
+            try {
+                const payloadBase64 = token.split('.')[1];
+                const decodedPayload = JSON.parse(atob(payloadBase64));
+
+                document.getElementById('user-display').textContent = decodedPayload.sub || 'User';
+                document.getElementById('role-display').textContent = decodedPayload.role || 'user';
+            } catch (e) {
+                console.error('Invalid token format');
+                localStorage.removeItem('jwt');
+                window.location.href = '/login.html';
+            }
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('jwt');
+                window.location.href = '/login.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
