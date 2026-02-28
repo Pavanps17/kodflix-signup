@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up - AuthApp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Sign Up - Netflix Theme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="auth-container glassmorphism fade-in">
-    <div class="header">
-      <h2>Create Account</h2>
-      <p>Join us today to get started.</p>
-    </div>
-    
-    <div id="alert-box" class="alert hidden"></div>
-    
-    <form id="signup-form">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="johndoe" required>
+
+<body class="signup-body">
+  <div class="signup-wrapper">
+    <div class="signup-left"></div>
+    <div class="signup-right">
+      <div class="top-nav">
+        <span>Already have an account?</span> <a href="/login.html">Sign In</a>
       </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+      <div class="form-container">
+        <h1 class="logo-n">N</h1>
+        <h2>Sign up</h2>
+        <div id="alert-box" class="alert hidden"></div>
+        <form id="signup-form">
+          <div class="input-row">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="email" id="email" name="email" placeholder="Email or Phone" required>
+          </div>
+          <div class="input-col">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            <input type="password" id="password" name="password" placeholder="Create New Password" required
+              minlength="6">
+          </div>
+          <button type="submit" class="red-btn" id="signup-btn">
+            <span>Continue</span>
+            <div class="loader hidden" id="signup-loader"></div>
+          </button>
+          <div class="remember-row space-between" style="margin-top: 1rem;">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+          <button type="button" class="facebook-btn" style="margin-top: 1rem;">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png"
+              alt="FB" width="20" height="20" style="margin-right: 10px; vertical-align: middle;">
+            <span>Facebook sign in</span>
+          </button>
+        </form>
       </div>
-      
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+1234567890" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="••••••••" required minlength="6">
-      </div>
-      
-      <button type="submit" class="primary-btn" id="signup-btn">
-        <span>Sign Up</span>
-        <div class="loader hidden" id="signup-loader"></div>
-      </button>
-    </form>
-    
-    <div class="footer-links">
-      <p>Already have an account? <a href="/login.html">Log In</a></p>
     </div>
   </div>
-
   <script src="app.js"></script>
 </body>
+
 </html>
