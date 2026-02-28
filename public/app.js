@@ -107,7 +107,7 @@ if (loginForm) {
             showAlert(result.message || 'Login successfull', 'success');
 
             setTimeout(() => {
-                window.location.href = '/dashboard.html';
+                window.location.href = 'https://sample3-dusky.vercel.app';
             }, 500);
 
         } catch (error) {
